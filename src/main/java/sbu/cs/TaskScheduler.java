@@ -32,16 +32,27 @@ public class TaskScheduler
 
     public static ArrayList<String> doTasks(ArrayList<Task> tasks)
     {
+        ArrayList<Task> sortedTasks = new ArrayList<>();
         ArrayList<String> finishedTasks = new ArrayList<>();
 
-        /*
-        TODO
-            Create a thread for each given task, And then start them based on which task has the highest priority
-            (highest priority belongs to the tasks that take more time to be completed).
-            You have to wait for each task to get done and then start the next task.
-            Don't forget to add each task's name to the finishedTasks after it's completely finished.
-         */
-
+        sortedTasks.add(tasks.getFirst());
+        tasks.removeFirst();
+        while (!tasks.isEmpty()) {
+            boolean x = true;
+            for (int i = 0; i < sortedTasks.size(); i++) {
+                if (tasks.getFirst().processingTime > sortedTasks.get(i).processingTime && x) {
+                    sortedTasks.add(i, tasks.getFirst());
+                    x = false;
+                }
+            }
+            if (x){
+                sortedTasks.addLast(tasks.getFirst());
+            }
+            tasks.removeFirst();
+        }
+        for (int i = 0; i < sortedTasks.size(); i++) {
+            finishedTasks.add(sortedTasks.get(i).taskName);
+        }
         return finishedTasks;
     }
 
