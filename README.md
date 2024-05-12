@@ -56,6 +56,10 @@ public static class SleepThread extends Thread {
         thread.interrupt();
     }
 ```
+answer :
+Thread was interrupted
+Thread will be finished here!!!
+
 2. In Java, what would be the outcome if the `run()` method of a `Runnable` object is invoked directly, without initiating it inside a `Thread` object?
 ```java
 public class DirectRunnable implements Runnable {
@@ -70,7 +74,12 @@ public class Main {
         runnable.run();
     }
 }
+
 ```
+answer :
+main
+
+
 3. Elaborate on the sequence of events that occur when the `join()` method of a thread (let's call it `Thread_0`) is invoked within the `Main()` method of a Java program.
 ```java
 public class JoinThread extends Thread {
@@ -92,6 +101,8 @@ public class Main {
     }
 }
 ```
+answer :
+main will stop until Thread_0 finishes. then main continues
 
 ### Practical Questions 💻
 
